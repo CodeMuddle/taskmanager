@@ -1,0 +1,56 @@
+.tabswitcher-container {
+    width: 600px;
+    position: fixed;
+    top: 40px;
+    left: 40%;
+    z-index: 10000;
+    background-color: #ccc;
+}
+
+.tabswitcher-container form {
+    z-index: 10000;
+}
+
+.tabswitcher-hide {
+    display: none;
+}
+
+.tabswitcher-container ul {
+    list-style-type: none;
+    text-align: left;
+    margin: 0 0;
+    padding: 0;
+    background-color: #ffd;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.tabswitcher-container ul li {
+    text-align: left;
+    border: 1px solid #ccc;
+    padding: 4px;
+}
+
+.tabswitcher-container ul li.selected {
+    background-color: #0275d8;
+}
+
+.tabswitcher-container ul li:hover {
+    cursor: pointer;
+    background-color: #0275d8;
+}
+
+.tabswitcher-container img.tabswitcher-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.tabswitcher-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 990;
+}

@@ -1,0 +1,65 @@
+.clearfix{
+    clear:both;
+}
+
+.section-container {
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-bottom: 20px; 
+}
+
+.section-header {
+    height: 30px;
+    background-color: #ccc;
+    padding: 6px 9px;
+}
+
+.section-header .section-header-head {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.section-body.clearfix {
+    min-height: 250px;
+}
+
+ol {
+    padding: 5px;
+    list-style-type: none;
+}
+
+ol li + li {
+    border-top: 1px dotted #000;
+}
+
+.green {
+    color: rgba(51, 205, 35, 0.65);
+}
+
+.green-light {
+    color: #93A264;
+}
+
+.blue {
+    color: #5383A4;
+}
+
+.blue-light {
+    color: #D4DCDE;
+}
+
+.orange {
+    color: #F6C358;
+}
+
+.orange-light {
+    color: #F7E8CB;
+}
+
+.red {
+    color: #fc5107;
+}
+
+.red-light {
+    color: #E0855D;
+}

@@ -1,0 +1,15 @@
+./node_modules
+./.sonarlint
+./build
+./.sass-cache
+
+/node_modules
+/.sonarlint
+/build
+/.sass-cache
+
+# for mac-user
+/.DS_Store
+**/*/.DS_Store
+**/*/*/.DS_Store
+**/.DS_Store
