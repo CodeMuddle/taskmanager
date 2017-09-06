@@ -64,6 +64,7 @@ ol li + li {
 
 .border-green {
     border-color: rgb(152, 205, 96);
+    background-color:rgba(152, 205, 96,0.12);
 }
 
 .blue {
@@ -75,7 +76,8 @@ ol li + li {
 }
 
 .border-blue {
-    border-color: #5383A4;
+    border-color: #92C8ED;
+    background-color:rgba(146, 200, 237,0.12);
 }
 
 .orange {
@@ -88,6 +90,8 @@ ol li + li {
 
 .border-orange {
     border-color: #F6C358;
+    background-color:rgba(246, 195, 88,0.12);
+    
 }
 
 .red {
@@ -100,4 +104,9 @@ ol li + li {
 
 .border-red {
     border-color: #fc5107;
+    background-color:rgba(252, 81, 7,0.12);    
+}
+
+.border-green input, .border-blue input, .border-orange input, .border-red input {
+    background-color: transparent; 
 }
