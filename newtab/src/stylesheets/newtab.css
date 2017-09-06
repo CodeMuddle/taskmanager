@@ -1,3 +1,9 @@
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 .clearfix{
     clear:both;
 }
@@ -109,4 +115,12 @@ ol li + li {
 
 .border-green input, .border-blue input, .border-orange input, .border-red input {
     background-color: transparent; 
+}
+
+.button-show-task {
+    font-size: 11px;
+    background: rgba(204, 204, 204, 0.5);
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
 }

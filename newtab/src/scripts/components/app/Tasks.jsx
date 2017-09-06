@@ -24,12 +24,15 @@ class App extends Component {
                             <li>
                                 <span className={""}> <span className={"glyphicon glyphicon-ok"}></span> </span>
                                 some text
-                  </li>
+                            </li>
                             <li>
                                 <span className={""}> <span className={"glyphicon glyphicon-ok"}></span> </span>
                                 some text
-                  </li>
+                            </li>
                         </ol>
+                    </div>
+                    <div className={"section-footer"}>
+                        <span className={"button-show-task"}>Show 1 done tasks</span>
                     </div>
                 </div>
             </div>
