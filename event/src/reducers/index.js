@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
 
-import count from './count';
-import tabs from './tabs';
-
+import tasks from './tasks';
+console.log(tasks,"tasks");
 export default combineReducers({
-    count,
-    tabs
+    tasks
 });

@@ -15,42 +15,34 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <div>Filters By:
-          <label htmlFor="">Date
-            <DatePicker
-              dateFormat="YYYY/MM/DD"
-              selected={this.props.date}
-            />
-          </label>
-          <div className={"btn-group filter-task"} data-toggle="buttons">
-            <label className={"btn btn-primary active"}>
-              <input type="radio" name="options" id="option1" autocomplete="off" checked /> All
-            </label>
-            <label className={"btn btn-primary"}>
-              <input type="radio" name="options" id="option2" autocomplete="off" /> Active
-            </label>
-            <label className={"btn btn-primary"}>
-              <input type="radio" name="options" id="option3" autocomplete="off" /> Completed
-            </label>
+        <div className={"container-fluid"}>
+          <div className={"menu menu-bar"}>
+            {/* <button className={"btn btn-status btn-all"}>All</button> */} {/* Add class .active */}
+            {/* <button className={"btn btn-status btn-active"}>Active</button> */} {/* Add class .active */}
+            {/* <button className={"btn btn-status btn-completed"}>Completed</button> */} {/* Add class .active */}            
           </div>
-        </div> */}
+        </div>
         <div>
           <div>
             <Tasks
               color="green"
               title="Do First"
+              taskType="1"
             />
             <Tasks
               color="blue"
               title="Schedule"
+              taskType="2"
             />
             <Tasks
               color="orange"
               title="Delegate"
+              taskType="3"
             />
             <Tasks
               color="red"
               title="Don't Do"
+              taskType="4"
             />
           </div>
         </div>
@@ -60,12 +52,12 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("mapStateToProps",state);
+  state.tasks = state.tasks || {};
   return {
-    count: state.count || 0,
-    tabs: state.tabs || {},
-    currentTab: state.currentTab || {},
-    search: state.search || "",
-    type: state.type || null
+    list: state.tasks.list || [],
+    search: state.tasks.search || "",
+    type: state.tasks.type || null
   };
 };
 

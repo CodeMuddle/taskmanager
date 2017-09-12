@@ -8,6 +8,23 @@ body {
     clear:both;
 }
 
+label.checkboxLabel input[type="checkbox"] {
+    display: none;
+}
+
+label.checkboxLabel input[type="checkbox"] + span.glyphicon-ok{
+    color:#E8E5E5;
+    margin-right:10px;
+}
+
+label.checkboxLabel input[type="checkbox"] + span.glyphicon-ok:hover{
+    color:green
+}
+
+label.checkboxLabel input[type="checkbox"]:checked + span.glyphicon-ok{
+    color:green
+}
+
 .filter-task{
     margin-left:20px;
 }
@@ -35,6 +52,12 @@ body {
     height: 325px;
 }
 
+.section-body.clearfix ol{
+    height: 283px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .create-input {
     width: 100%;
     border: 0px;
@@ -45,6 +68,10 @@ body {
 
 .create-input:focus,.create-input:active,.create-input:hover {
     outline-style: none;
+}
+
+.w80{
+    width: 80%;
 }
 
 ol {
@@ -123,4 +150,20 @@ ol li + li {
     padding: 4px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.btn-status + .btn-status {
+    margin-left: 10px;
+}
+
+.btn.btn-all.active,.btn.btn-all:hover {
+    background-color:rgb(246, 195, 88);
+}
+
+.btn.btn-active.active,.btn.btn-active:hover {
+    background-color:rgb(152, 205, 96);
+}
+
+.btn.btn-completed.active,.btn.btn-completed:hover {
+    background-color:rgb(252, 81, 7);
 }
