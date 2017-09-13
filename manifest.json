@@ -2,16 +2,12 @@
     "manifest_version": 2,
     "name": "Task Manager",
     "description": "Task Manager",
-    "version": "0.0.0.1",
+    "version": "0.1.0.0",
     "background": {
         "scripts": [
             "event.js"
         ],
         "persistent": true
-    },
-    "browser_action": {
-        "default_title": "RCR Example",
-        "default_popup": "popup.html"
     },
     "permissions": [
         "background",
@@ -19,10 +15,5 @@
     ],
     "chrome_url_overrides": {
         "newtab": "newtab.html"
-    },
-    "content_scripts": [{
-        "matches": ["*://*/*"],
-        "css": ["content.css"],
-        "js": ["content.js"]
-    }]
+    }
 }

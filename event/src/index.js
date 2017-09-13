@@ -9,78 +9,24 @@ wrapStore(store, {
 });
 
 let _this = this;
-console.log("*** TAB SWITCHER TAB SECTION ***");
+console.log("*** TASK MANAGER ***");
 
-// TASK: Tab on created
-chrome.tabs.onCreated.addListener((tab) => {
-    console.log("called on new tab created", tab);
-    chrome.tabs.getAllInWindow((tabs) => {
-        store.dispatch({
-            type: 'SET_ALL_TABS',
-            tabs: tabs
-        });
+const initialState = {
+    search: "",
+    taskStatus:{
+        "1":false,
+        "2":false,
+        "3":false,
+        "4":false
+    },
+    list:[]
+};
+
+chrome.storage.sync.get('state',function(ob){
+    console.log("Event::index state",ob);
+    store.dispatch({    
+        'actionType':'initializeState',
+        'type':'initializeState',
+        'state':ob.state || initialState
     });
 });
-chrome.tabs.getAllInWindow((tabs) => {
-    store.dispatch({
-        type: 'SET_ALL_TABS',
-        tabs: tabs
-    });
-});
-
-// TASK: Tab on updated
-// chrome.tabs.onUpdated.addListener((tab) => {
-//     console.log("called on tab updated", tab);
-//     // ADD NEW TAB AND CHECK CURRENT TAB
-//     /*store.dispatch({
-//         type: 'CURRENT_TAB',
-//         text: "UPDATED : " + tab.title
-//     });*/
-// });
-
-chrome.tabs.onRemoved.addListener((tab) => {
-    console.log("called on tab deleted", tab);
-    chrome.tabs.getAllInWindow((tabs) => {
-        store.dispatch({
-            type: 'SET_ALL_TABS',
-            tabs: tabs
-        });
-    });
-});
-chrome.tabs.onActivated.addListener((tab) => {
-    console.log("called on window changed", tab);
-    chrome.tabs.getAllInWindow((tabs) => {
-        store.dispatch({
-            type: 'SET_ALL_TABS',
-            tabs: tabs
-        });
-    });
-});
-chrome.tabs.onDetached.addListener((tab) => {
-    console.log("called on tab detached", tab);
-    chrome.tabs.getAllInWindow((tabs) => {
-        store.dispatch({
-            type: 'SET_ALL_TABS',
-            tabs: tabs
-        });
-    });
-});
-chrome.tabs.onAttached.addListener((tab) => {
-    console.log("called on tab attached", tab);
-
-});
-var updatedTimeout = null;
-
-function updatedTabs(store, id) {
-    //debounce for
-    if (updatedTimeout) {
-        clearTimeout(updatedTimeout);
-    }
-    updatedTimeout = setTimeout(() => {
-        store.dispatch({
-            type: 'SET_ALL_TABS',
-            id: id
-        })
-        updatedTimeout = null;
-    }, 20)
-}

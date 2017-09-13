@@ -14,6 +14,6 @@ document.body.insertBefore(anchor, document.body.childNodes[0]);
 
 render(
   <Provider store={proxyStore}>
-    <App/>
+    <div></div>
   </Provider>
   , document.getElementById('rcr-anchor'));

@@ -1,17 +1,11 @@
 import UniqueIdentifier from '../utils/uniqueidentifier';
-const initialState = {
-    search: "",
-    taskStatus:{
-        "1":false,
-        "2":false,
-        "3":false,
-        "4":false
-    },
-    list:[]
-};
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
     console.log("state:",state,"action",action.actionType);
+    if(action.actionType === 'initializeState'){
+        state = action.state;
+        return state;
+    }
     switch (action.actionType) {
         case 'addToList':
             const id = UniqueIdentifier.getUniqueIdentifier();
@@ -23,14 +17,14 @@ export default (state = initialState, action) => {
                 type:action.type,
                 isCompleted:false
             });
-            return state;
+            break;
         case 'removeFromList':
             var task = action.task;
             state.list = state.list || []
             state.list = state.list.filter(function(l){
                 return !(l.id === task.id);
             });
-            return state;
+            break;
         case 'updateTask':
             var updateTask = action.task;
             state.list = state.list || []
@@ -41,12 +35,16 @@ export default (state = initialState, action) => {
                 }
                 return true;
             });
-            return state;
+            break;
         case 'updateStatus':
             console.log("event::task taskStatus",action.taskStatus);
             state.taskStatus = action.taskStatus;
-            return state;
+            break;
         default:
-            return state;
+            break;
     }
+    if(Object.keys(state || {}).length){
+        chrome.storage.sync.set({'state':state});
+    }
+    return state;
 };
