@@ -85,13 +85,13 @@ class App extends Component {
         var loopList = [],cList = [];
         for(var i=0;i<activeList.length;i++) {
             var task = activeList[i];
-            loopList.push(<Task task ={task} onDelete={this.deleteTask} updateTask={this.updateTask} updateCheckbox={this.updateCheckbox}/>);
+            loopList.push(<Task task ={task} onDelete={this.deleteTask} updateTask={this.updateTask} key={task.id} updateCheckbox={this.updateCheckbox}/>);
         }
 
         if(this.props.taskStatus[this.props.taskType]){
             for(var i=0;i<completedList.length;i++) {
                 var task = completedList[i];
-                cList.push(<Task task ={task} onDelete={this.deleteTask} updateCheckbox={this.updateCheckbox}/>);
+                cList.push(<Task task ={task} key={task.id} onDelete={this.deleteTask} updateCheckbox={this.updateCheckbox}/>);
             }
         }
         var showCompletedButton = [];
