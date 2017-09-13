@@ -10,6 +10,9 @@ class App extends Component {
         this.state = {
             value:''
         }
+        this.deleteTask = this.deleteTask.bind(this);
+        this.updateTask = this.updateTask.bind(this);
+        this.updateCheckbox = this.updateCheckbox.bind(this);
     }
 
     componentwillreceiveprops() {
@@ -20,8 +23,32 @@ class App extends Component {
         this.value = event.target.value
     }
 
-    deleteTask(e){
-        alert("called");
+    deleteTask(t){
+        console.log("Tasks::deleteTask",t);
+        this.props.dispatch({
+            'actionType':'removeFromList',
+            'task':t,
+            'type':'removeFromList'
+        });
+        this.forceUpdate();
+    }
+
+    updateTask(t){
+        this.props.dispatch({
+            'actionType':'updateTask',
+            'task':t,
+            'type':'updateTask'
+        });
+        this.forceUpdate();
+    }
+
+    updateCheckbox(t){
+        this.props.dispatch({
+            'actionType':'updateTask',
+            'task':t,
+            'type':'updateTask'
+        });
+        this.forceUpdate();
     }
 
     addToList(e) {
@@ -40,19 +67,51 @@ class App extends Component {
         this.forceUpdate();
     }
 
+    showCompletedTask(t) {
+        console.log('called');
+        this.props.taskStatus[t] = !this.props.taskStatus[t];
+        this.props.dispatch({
+            'actionType':'updateStatus',
+            'type':'updateStatus',
+            'taskStatus':this.props.taskStatus
+        });
+        this.forceUpdate();
+    }
+
     render() {
-        var currentList = (this.props.list || []).filter(l=> this.props.taskType === l.type);
-        var loopList = [];
-        for(var i=0;i<currentList.length;i++) {
-            var task = currentList[i];
-            loopList.push(<Task task ={task}/>);
+        var currentList = (this.props.list || []).filter(l => this.props.taskType === l.type);
+        var activeList = currentList.filter((l) => !l.isCompleted);
+        var completedList = currentList.filter((l) => l.isCompleted);
+        var loopList = [],cList = [];
+        for(var i=0;i<activeList.length;i++) {
+            var task = activeList[i];
+            loopList.push(<Task task ={task} onDelete={this.deleteTask} updateTask={this.updateTask} updateCheckbox={this.updateCheckbox}/>);
         }
+
+        if(this.props.taskStatus[this.props.taskType]){
+            for(var i=0;i<completedList.length;i++) {
+                var task = completedList[i];
+                cList.push(<Task task ={task} onDelete={this.deleteTask} updateCheckbox={this.updateCheckbox}/>);
+            }
+        }
+        var showCompletedButton = [];
+        if(completedList.length){
+            if(!this.props.taskStatus[this.props.taskType]){
+                showCompletedButton.push(<span className={"button-show-task"} onClick={(e)=>{this.showCompletedTask(this.props.taskType)}}>Show {completedList.length} done tasks</span>);
+            } else {
+                showCompletedButton.push(<span className={"button-show-task"} onClick={(e)=>{this.showCompletedTask(this.props.taskType)}}>Hide done tasks</span>);
+            }
+        } else {
+            showCompletedButton.push(<span className={"button-show-task"}>No Completed Tasks</span>);
+        }
+
+        
         console.log('Tasks::looplist',loopList,currentList,this.props.list);
         return (
             <div className={"col-sm-6"}>
                 <div className={"section-container border-" + (this.props.color || "default")}>
                     <div className={"section-header"}>
-                        <span className={"section-header-head"}>{this.props.title || "Tasks"}</span> <span className={"badge"}>{currentList.length}</span>
+                        <span className={"section-header-head"}>{this.props.title || "Tasks"}</span> <span className={"badge"}>{activeList.length}/{currentList.length}</span>
                     </div>
                     <div className={"section-body clearfix"}>
                         <form onSubmit={(e)=> {this.addToList(e)} }>
@@ -60,10 +119,11 @@ class App extends Component {
                         </form>
                         <ol>
                             {loopList}    
+                            {cList}
                         </ol>
                     </div>
                     <div className={"section-footer"}>
-                        <span className={"button-show-task"}>Show 1 done tasks</span>
+                        {showCompletedButton}
                     </div>
                 </div>
             </div>
@@ -76,7 +136,8 @@ const mapStateToProps = (state) => {
     return {
         list: state.tasks.list || [],
         search: state.tasks.search || "",
-        type: state.tasks.type || null
+        type: state.tasks.type || null,
+        taskStatus: state.tasks.taskStatus || {}
     };
 };
 

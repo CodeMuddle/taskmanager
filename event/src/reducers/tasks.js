@@ -1,12 +1,13 @@
 import UniqueIdentifier from '../utils/uniqueidentifier';
 const initialState = {
-    isLoading: false,
-    currentTab: "",
-    currentIndex: 0,
-    tabs: [],
     search: "",
-    filteredTabs: [],
-    selectedTab: {}
+    taskStatus:{
+        "1":false,
+        "2":false,
+        "3":false,
+        "4":false
+    },
+    list:[]
 };
 
 export default (state = initialState, action) => {
@@ -31,7 +32,6 @@ export default (state = initialState, action) => {
             });
             return state;
         case 'updateTask':
-            debugger;
             var updateTask = action.task;
             state.list = state.list || []
             state.list = state.list.filter(function(l){
@@ -41,6 +41,10 @@ export default (state = initialState, action) => {
                 }
                 return true;
             });
+            return state;
+        case 'updateStatus':
+            console.log("event::task taskStatus",action.taskStatus);
+            state.taskStatus = action.taskStatus;
             return state;
         default:
             return state;

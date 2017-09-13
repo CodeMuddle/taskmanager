@@ -16,11 +16,10 @@ class App extends Component {
     changeValue(e) {
         var t = this.props.task;
         t.isCompleted = this.checkbox.checked
-        this.props.dispatch({
-            'actionType':'updateTask',
-            'task':t,
-            'type':'updateTask'
+        this.setState({
+            isChecked:t.isCompleted
         });
+        this.props.updateCheckbox(t);
     }
 
     changeInputValue(event) {
@@ -34,33 +33,31 @@ class App extends Component {
             var t = _this.props.task;
             t.text = value;
             _this.setState({'debounce':null});
-            _this.props.dispatch({
-                'actionType':'updateTask',
-                'task':t,
-                'type':'updateTask'
-            });
+            _this.props.updateTask(t);
         },1000);
         this.setState({'value':value,"debounce":debounce});
     }
 
     deleteTask(t){
         console.log("Task::deleteTask",t);
-        this.props.dispatch({
-            'actionType':'removeFromList',
-            'task':t,
-            'type':'removeFromList'
-        });
+        this.props.onDelete(t);
     }
 
     render() {
         var l = this.props.task;
+        var task = [];
+        if(l.isCompleted){
+            task.push(<s>{l.text}</s>);
+        } else {
+            task.push(<input ref={(input)=>{ this.input = input; }} className={"create-input w80"} type="text" value={this.state.value} onChange={(e)=>{ this.changeInputValue(e) }} />);
+        }
         return (
             <li>
                 <label className={"checkboxLabel"}>
-                    <input ref={(checkbox)=>{ this.checkbox = checkbox; }} type="checkbox" onChange={(e)=>{ this.changeValue(e) }} />
+                    <input ref={(checkbox)=>{ this.checkbox = checkbox; }} defaultChecked={this.state.isChecked}  type="checkbox" onChange={(e)=>{ this.changeValue(e) }} />
                     <span className={"glyphicon glyphicon-ok"}></span>
                 </label>
-                <input ref={(input)=>{ this.input = input; }} className={"create-input w80"} type="text" value={this.state.value} onChange={(e)=>{ this.changeInputValue(e) }} /><span className={"pull-right hover"} onClick={(e)=>{this.deleteTask(l);}}>Delete</span></li>
+                {task}<span className={"pull-right hover"} onClick={(e)=>{this.deleteTask(l);}}>Delete</span></li>
         );
     }
 }
