@@ -18,6 +18,10 @@ export default (state = {}, action) => {
                 isCompleted:false
             });
             break;
+        case 'addTask':
+            const id = UniqueIdentifier.getUniqueIdentifier();
+            
+            break;
         case 'removeFromList':
             var task = action.task;
             state.list = state.list || []

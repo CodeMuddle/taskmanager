@@ -15,6 +15,9 @@ label.checkboxLabel input[type="checkbox"] {
 label.checkboxLabel input[type="checkbox"] + span.glyphicon-ok{
     color:#E8E5E5;
     margin-right:10px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 15px;
 }
 
 label.checkboxLabel input[type="checkbox"] + span.glyphicon-ok:hover{
