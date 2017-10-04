@@ -8,6 +8,8 @@
 /build
 /.sass-cache
 
+package-lock.json
+
 # for mac-user
 /.DS_Store
 **/*/.DS_Store
