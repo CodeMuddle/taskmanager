@@ -6,9 +6,9 @@ import Task from './Task';
 class App extends Component {
     constructor(props) {
         super(props);
-        console.log("checking dispatch",this.props);
+        console.log("checking dispatch", this.props);
         this.state = {
-            value:''
+            value: ''
         }
         this.deleteTask = this.deleteTask.bind(this);
         this.updateTask = this.updateTask.bind(this);
@@ -16,54 +16,59 @@ class App extends Component {
     }
 
     componentwillreceiveprops() {
-        
+
     }
 
-    changeValue(event){
+    changeValue(event) {
         this.value = event.target.value
     }
 
-    deleteTask(t){
-        console.log("Tasks::deleteTask",t);
+    deleteTask(t) {
+        console.log("Tasks::deleteTask", t);
         this.props.dispatch({
-            'actionType':'removeFromList',
-            'task':t,
-            'type':'removeFromList'
+            'actionType': 'removeFromList',
+            'task': t,
+            'type': 'removeFromList'
         });
         this.forceUpdate();
     }
 
-    updateTask(t){
+    updateTask(t) {
         this.props.dispatch({
-            'actionType':'updateTask',
-            'task':t,
-            'type':'updateTask'
+            'actionType': 'updateTask',
+            'task': t,
+            'type': 'updateTask'
         });
         this.forceUpdate();
     }
 
-    updateCheckbox(t){
+    updateCheckbox(t) {
         this.props.dispatch({
-            'actionType':'updateTask',
-            'task':t,
-            'type':'updateTask'
+            'actionType': 'updateTask',
+            'task': t,
+            'type': 'updateTask'
         });
         this.forceUpdate();
     }
 
     addToList(e) {
         e.preventDefault();
-        console.log("Task::addToList ",this.props);
+        console.log("Task::addToList ", this.props);
+        this.value = this.value && this.value.trim();
+        if(!this.value){
+            return
+        }
         this.props.dispatch({
-            'actionType':'addToList',
-            'text':this.value || "",
-            'type':this.props.taskType
+            'actionType': 'addToList',
+            'text': this.value || "",
+            'type': this.props.taskType
         });
-        console.log("Task::addToList ",this.props);
-        if(this.inputValue) {
+        console.log("Task::addToList ", this.props);
+        if (this.inputValue) {
             this.inputValue.value = '';
         }
-        
+        this.value = '';
+
         this.forceUpdate();
     }
 
@@ -71,9 +76,9 @@ class App extends Component {
         console.log('called');
         this.props.taskStatus[t] = !this.props.taskStatus[t];
         this.props.dispatch({
-            'actionType':'updateStatus',
-            'type':'updateStatus',
-            'taskStatus':this.props.taskStatus
+            'actionType': 'updateStatus',
+            'type': 'updateStatus',
+            'taskStatus': this.props.taskStatus
         });
         this.forceUpdate();
     }
@@ -82,43 +87,43 @@ class App extends Component {
         var currentList = (this.props.list || []).filter(l => this.props.taskType === l.type);
         var activeList = currentList.filter((l) => !l.isCompleted);
         var completedList = currentList.filter((l) => l.isCompleted);
-        var loopList = [],cList = [];
-        for(var i=0;i<activeList.length;i++) {
+        var loopList = [], cList = [];
+        for (var i = 0; i < activeList.length; i++) {
             var task = activeList[i];
-            loopList.push(<Task task ={task} onDelete={this.deleteTask} updateTask={this.updateTask} key={task.id} updateCheckbox={this.updateCheckbox}/>);
+            loopList.push(<Task task={task} onDelete={this.deleteTask} updateTask={this.updateTask} key={task.id} updateCheckbox={this.updateCheckbox} />);
         }
 
-        if(this.props.taskStatus[this.props.taskType]){
-            for(var i=0;i<completedList.length;i++) {
+        if (this.props.taskStatus[this.props.taskType]) {
+            for (var i = 0; i < completedList.length; i++) {
                 var task = completedList[i];
-                cList.push(<Task task ={task} key={task.id} onDelete={this.deleteTask} updateCheckbox={this.updateCheckbox}/>);
+                cList.push(<Task task={task} key={task.id} onDelete={this.deleteTask} updateCheckbox={this.updateCheckbox} />);
             }
         }
         var showCompletedButton = [];
-        if(completedList.length){
-            if(!this.props.taskStatus[this.props.taskType]){
-                showCompletedButton.push(<span className={"button-show-task"} onClick={(e)=>{this.showCompletedTask(this.props.taskType)}}>Show {completedList.length} done tasks</span>);
+        if (completedList.length) {
+            if (!this.props.taskStatus[this.props.taskType]) {
+                showCompletedButton.push(<span className={"button-show-task"} onClick={(e) => { this.showCompletedTask(this.props.taskType) }}>Show {completedList.length} done tasks</span>);
             } else {
-                showCompletedButton.push(<span className={"button-show-task"} onClick={(e)=>{this.showCompletedTask(this.props.taskType)}}>Hide done tasks</span>);
+                showCompletedButton.push(<span className={"button-show-task"} onClick={(e) => { this.showCompletedTask(this.props.taskType) }}>Hide done tasks</span>);
             }
         } else {
             showCompletedButton.push(<span className={"button-show-task"}>No Completed Tasks</span>);
         }
 
-        
-        console.log('Tasks::looplist',loopList,currentList,this.props.list);
+
+        console.log('Tasks::looplist', loopList, currentList, this.props.list);
         return (
-            <div className={"col-sm-6"}>
+            <div className={"col-sm-6 " + (this.props.customClass || "")}>
                 <div className={"section-container border-" + (this.props.color || "default")}>
                     <div className={"section-header"}>
                         <span className={"section-header-head"}>{this.props.title || "Tasks"}</span> <span className={"badge"}>{activeList.length}/{currentList.length}</span>
                     </div>
                     <div className={"section-body clearfix"}>
-                        <form onSubmit={(e)=> {this.addToList(e)} }>
-                        <input type="text" className={"create-input"} ref={(input) => this.inputValue = input } placeholder="Create new Task" onChange={(e)=>{ this.changeValue(e) }}/>
+                        <form onSubmit={(e) => { this.addToList(e) }}>
+                            <input type="text" className={"create-input"} ref={(input) => this.inputValue = input} placeholder="Create new Task" onChange={(e) => { this.changeValue(e) }} />
                         </form>
                         <ol>
-                            {loopList}    
+                            {loopList}
                             {cList}
                         </ol>
                     </div>

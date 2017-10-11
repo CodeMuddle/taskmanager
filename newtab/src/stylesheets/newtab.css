@@ -4,37 +4,42 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-.clearfix{
-    clear:both;
+
+.clearfix {
+    clear: both;
 }
 
 label.checkboxLabel input[type="checkbox"] {
     display: none;
 }
 
-label.checkboxLabel input[type="checkbox"] + span.glyphicon-ok{
-    color:#E8E5E5;
-    margin-right:10px;
+label.checkboxLabel input[type="checkbox"]+span.glyphicon-ok {
+    color: rgba(0, 0, 0, 0);
+    border: 1px solid #E8E5E5;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 15px;
 }
 
-label.checkboxLabel input[type="checkbox"] + span.glyphicon-ok:hover{
-    color:green
+label.checkboxLabel input[type="checkbox"]+span.glyphicon-ok:hover {
+    border: 1px solid #A8A5A5;
+    color: green;
 }
 
-label.checkboxLabel input[type="checkbox"]:checked + span.glyphicon-ok{
-    color:green
+label.checkboxLabel input[type="checkbox"]:checked+span.glyphicon-ok {
+    border: 1px solid #A8A5A5;
+    color: green
 }
 
-.filter-task{
-    margin-left:20px;
+.filter-task {
+    margin-left: 20px;
 }
 
 .section-container {
     border: 1px solid #000;
     border-left: 10px solid #000;
     border-radius: 5px;
-    margin-top: 20px; 
-    margin-bottom: 20px;
+    margin-top: 20px;
     padding: 24px;
 }
 
@@ -52,7 +57,7 @@ label.checkboxLabel input[type="checkbox"]:checked + span.glyphicon-ok{
     height: 325px;
 }
 
-.section-body.clearfix ol{
+.section-body.clearfix ol {
     height: 283px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -61,16 +66,18 @@ label.checkboxLabel input[type="checkbox"]:checked + span.glyphicon-ok{
 .create-input {
     width: 100%;
     border: 0px;
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd; */
     font-size: 17px;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
 }
 
-.create-input:focus,.create-input:active,.create-input:hover {
+.create-input:focus,
+.create-input:active,
+.create-input:hover {
     outline-style: none;
 }
 
-.w80{
+.w80 {
     width: 80%;
 }
 
@@ -83,7 +90,7 @@ ol li {
     padding: 5px 0px;
 }
 
-ol li + li {
+ol li+li {
     border-top: 1px solid #eee;
 }
 
@@ -97,7 +104,7 @@ ol li + li {
 
 .border-green {
     border-color: rgb(152, 205, 96);
-    background-color:rgba(152, 205, 96,0.12);
+    background-color: rgba(152, 205, 96, 0.12);
 }
 
 .blue {
@@ -110,7 +117,7 @@ ol li + li {
 
 .border-blue {
     border-color: #92C8ED;
-    background-color:rgba(146, 200, 237,0.12);
+    background-color: rgba(146, 200, 237, 0.12);
 }
 
 .orange {
@@ -123,8 +130,7 @@ ol li + li {
 
 .border-orange {
     border-color: #F6C358;
-    background-color:rgba(246, 195, 88,0.12);
-    
+    background-color: rgba(246, 195, 88, 0.12);
 }
 
 .red {
@@ -137,11 +143,14 @@ ol li + li {
 
 .border-red {
     border-color: #fc5107;
-    background-color:rgba(252, 81, 7,0.12);    
+    background-color: rgba(252, 81, 7, 0.12);
 }
 
-.border-green input, .border-blue input, .border-orange input, .border-red input {
-    background-color: transparent; 
+.border-green input,
+.border-blue input,
+.border-orange input,
+.border-red input {
+    background-color: transparent;
 }
 
 .button-show-task {
@@ -152,18 +161,61 @@ ol li + li {
     cursor: pointer;
 }
 
-.btn-status + .btn-status {
+.btn-status+.btn-status {
     margin-left: 10px;
 }
 
-.btn.btn-all.active,.btn.btn-all:hover {
-    background-color:rgb(246, 195, 88);
+.btn.btn-all.active,
+.btn.btn-all:hover {
+    background-color: rgb(246, 195, 88);
 }
 
-.btn.btn-active.active,.btn.btn-active:hover {
-    background-color:rgb(152, 205, 96);
+.btn.btn-active.active,
+.btn.btn-active:hover {
+    background-color: rgb(152, 205, 96);
 }
 
-.btn.btn-completed.active,.btn.btn-completed:hover {
-    background-color:rgb(252, 81, 7);
+.btn.btn-completed.active,
+.btn.btn-completed:hover {
+    background-color: rgb(252, 81, 7);
+}
+
+.glyphicon-trash:hover {
+    color: red;
+}
+
+@media (max-width: 1366px) {
+    body {
+        font-size: 10px;
+    }
+    .section-container {
+        margin-top: 15px;
+        margin-bottom: 0px;
+        padding: 15px;
+    }
+    .section-header {
+        height: 30px;
+    }
+    .section-header .section-header-head {
+        font-size: 13px;
+    }
+    .section-body.clearfix {
+        height: 205px;
+    }
+    .create-input {
+        font-size: 11px;
+        margin-bottom: 2px;
+    }
+    .section-body.clearfix ol {
+        height: 163px;
+    }
+    .badge {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .pl-0 {
+        padding-left: 0px;
+    }
 }

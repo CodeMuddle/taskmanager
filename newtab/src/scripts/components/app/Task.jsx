@@ -52,12 +52,13 @@ class App extends Component {
             task.push(<input ref={(input)=>{ this.input = input; }} className={"create-input w80"} type="text" value={this.state.value} onChange={(e)=>{ this.changeInputValue(e) }} />);
         }
         return (
-            <li>
+            <li className={"action-hover"}>
                 <label className={"checkboxLabel"}>
                     <input ref={(checkbox)=>{ this.checkbox = checkbox; }} defaultChecked={this.state.isChecked}  type="checkbox" onChange={(e)=>{ this.changeValue(e) }} />
                     <span className={"glyphicon glyphicon-ok"}></span>
                 </label>
-                {task}<span className={"pull-right hover"} onClick={(e)=>{this.deleteTask(l);}}>Delete</span></li>
+                {task}<span className={"pull-right glyphicon glyphicon-trash"} onClick={(e)=>{this.deleteTask(l);}}></span>
+            </li>
         );
     }
 }
