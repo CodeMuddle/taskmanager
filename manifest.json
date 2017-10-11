@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Task Manager",
-    "description": "Task Manager",
-    "version": "0.1.0.0",
+    "name": "Productivity Matrix",
+    "description": "Comprises of Eisenhower Matrix.",
+    "version": "0.1.0.1",
     "background": {
         "scripts": [
             "event.js"
@@ -10,8 +10,7 @@
         "persistent": true
     },
     "permissions": [
-        "background",
-        "tabs", "contextMenus", "storage", "notifications"
+        "background", "storage"
     ],
     "chrome_url_overrides": {
         "newtab": "newtab.html"

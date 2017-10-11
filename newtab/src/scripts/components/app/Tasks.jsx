@@ -120,7 +120,7 @@ class App extends Component {
                     </div>
                     <div className={"section-body clearfix"}>
                         <form onSubmit={(e) => { this.addToList(e) }}>
-                            <input type="text" className={"create-input highlight-" + (this.props.color || 'default')} ref={(input) => this.inputValue = input} placeholder="Create new Task" onChange={(e) => { this.changeValue(e) }} />
+                            <input type="text" className={"create-input highlight-" + (this.props.color || 'default')} ref={(input) => this.inputValue = input} placeholder="Create new task" onChange={(e) => { this.changeValue(e) }} />
                         </form>
                         <ol>
                             {loopList}
