@@ -66,9 +66,30 @@ label.checkboxLabel input[type="checkbox"]:checked+span.glyphicon-ok {
 .create-input {
     width: 100%;
     border: 0px;
-    /* border-bottom: 1px solid #ddd; */
     font-size: 17px;
     margin-bottom: 5px;
+    border-bottom: 1px solid transparent; 
+    transition: 0.5s ease;
+}
+
+.highlight-default:focus {
+   border-bottom: 1px solid #ddd; 
+}
+
+.highlight-green:focus {
+  border-bottom: 1px solid #93A264;
+}
+
+.highlight-blue:focus {
+   border-bottom: 1px solid #5383A4; 
+}
+
+.highlight-orange:focus {
+   border-bottom: 1px solid #F6C358; 
+}
+
+.highlight-red:focus {
+   border-bottom: 1px solid #fc5107; 
 }
 
 .create-input:focus,
