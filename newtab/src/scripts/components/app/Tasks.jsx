@@ -99,15 +99,15 @@ class App extends Component {
                 cList.push(<Task task={task} key={task.id} onDelete={this.deleteTask} updateCheckbox={this.updateCheckbox} />);
             }
         }
-        var showCompletedButton = [];
+        var showCompletedButton = "";
         if (completedList.length) {
             if (!this.props.taskStatus[this.props.taskType]) {
-                showCompletedButton.push(<span className={"button-show-task"} onClick={(e) => { this.showCompletedTask(this.props.taskType) }}>Show {completedList.length} done tasks</span>);
+                showCompletedButton = (<span className={"button-show-task"} onClick={(e) => { this.showCompletedTask(this.props.taskType) }}>Show {completedList.length} done tasks</span>);
             } else {
-                showCompletedButton.push(<span className={"button-show-task"} onClick={(e) => { this.showCompletedTask(this.props.taskType) }}>Hide done tasks</span>);
+                showCompletedButton = (<span className={"button-show-task"} onClick={(e) => { this.showCompletedTask(this.props.taskType) }}>Hide done tasks</span>);
             }
         } else {
-            showCompletedButton.push(<span className={"button-show-task"}>No Completed Tasks</span>);
+            showCompletedButton = (<span className={"button-show-task"}>No Completed Tasks</span>);
         }
 
 

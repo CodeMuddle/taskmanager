@@ -57,7 +57,7 @@ class App extends Component {
                     <input ref={(checkbox)=>{ this.checkbox = checkbox; }} defaultChecked={this.state.isChecked}  type="checkbox" onChange={(e)=>{ this.changeValue(e) }} />
                     <span className={"glyphicon glyphicon-ok"}></span>
                 </label>
-                {task}<span className={"pull-right glyphicon glyphicon-trash"} onClick={(e)=>{this.deleteTask(l);}}></span>
+                {task}<span className={"pull-right float-right glyphicon glyphicon-trash"} onClick={(e)=>{this.deleteTask(l);}}></span>
             </li>
         );
     }

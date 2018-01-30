@@ -22,11 +22,12 @@ const initialState = {
     list:[]
 };
 
-chrome.storage.sync.get('state',function(ob){
+chrome.storage.sync.get(['state','notes'],function(ob){
     console.log("Event::index state",ob);
     store.dispatch({    
         'actionType':'initializeState',
         'type':'initializeState',
-        'state':ob.state || initialState
+        'state':ob.state || initialState,
+        'notes':ob.notes || {}
     });
 });

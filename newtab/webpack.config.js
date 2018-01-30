@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-
+  stats:"errors-only",
   entry: [
     './newtab/src/scripts/index.js'
   ],
@@ -25,7 +25,8 @@ module.exports = {
         exclude: /(node_modules)/,
         include: path.join(__dirname, 'src'),
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'react','stage-2'],
+          plugins: ['transform-class-properties']
         }
       }
     ]

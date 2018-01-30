@@ -16,7 +16,7 @@ gulp.task('assets', ['clean'], (cb) => {
         if (err) 
             throw new plugins.util.PluginError('webpack', err);
 
-        plugins.util.log('[webpack]', stats.toString());
+        // plugins.util.log('[webpack]', stats.toString());
 
         cb();
     });
@@ -27,7 +27,7 @@ gulp.task('popup-js', ['clean'], (cb) => {
         if (err) 
             throw new plugins.util.PluginError('webpack', err);
 
-        plugins.util.log('[webpack]', stats.toString());
+        // plugins.util.log('[webpack]', stats.toString());
 
         cb();
     });
@@ -37,8 +37,8 @@ gulp.task('newtab-js', ['clean'], (cb) => {
     webpack(newtabWebpackConfig, (err, stats) => {
         if (err) 
             throw new plugins.util.PluginError('webpack', err);
-
-        plugins.util.log('[webpack]', stats.toString());
+            // plugins.util.log('[webpack]')
+        // plugins.util.log('[webpack]', stats.toString());
 
         cb();
     });
@@ -54,7 +54,7 @@ gulp.task('event-js', ['clean'], (cb) => {
         if (err) 
             throw new plugins.util.PluginError('webpack', err);
 
-        plugins.util.log('[webpack]', stats.toString());
+        // plugins.util.log('[webpack]', stats.toString());
 
         cb();
     });
@@ -65,7 +65,7 @@ gulp.task('content-js', ['clean'], (cb) => {
         if (err) 
             throw new plugins.util.PluginError('webpack', err);
 
-        plugins.util.log('[webpack]', stats.toString());
+        // plugins.util.log('[webpack]', stats.toString());
 
         cb();
     });

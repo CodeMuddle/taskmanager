@@ -2,6 +2,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
 
 module.exports = {
+    stats:"errors-only",
     context: __dirname,
     devServer: {
         // This is required for older versions of webpack-dev-server

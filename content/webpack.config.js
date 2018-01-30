@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-
+  stats:"errors-only",
   entry: [
     './content/src/scripts/index.js'
   ],
