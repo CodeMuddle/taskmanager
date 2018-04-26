@@ -4,7 +4,10 @@
   "private": true,
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp watch",
+    "build":"gulp build",
+    "clean":"gulp clean"
   },
   "author": "Tyler Shaddix",
   "dependencies": {
@@ -30,6 +33,7 @@
     "css-loader": "^0.28.9",
     "gulp": "^3.9.0",
     "gulp-load-plugins": "^1.2.0",
+    "gulp-remove-files": "0.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "react-datepicker": "^0.53.0",

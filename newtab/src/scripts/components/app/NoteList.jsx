@@ -85,6 +85,7 @@ class NoteList extends Component {
       }
     return (
             <div className="col-md-3">
+                <br/>
                 <div className="card mb-3">
                     <div className="card-header">
                         <i className="glyphicon glyphicon-edit" onClick={()=>{this.clearNotes()}}></i>Notes

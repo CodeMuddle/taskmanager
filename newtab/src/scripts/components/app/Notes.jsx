@@ -19,6 +19,10 @@ class App extends Component {
       updateNote: null,
       isEdit:false
     });
+    this.props.dispatch({
+      type:'CLEAR_NOTE',
+      actionType:'CLEAR_NOTE',
+    })
   }
 
   showNotePage = (note) => {
@@ -27,6 +31,11 @@ class App extends Component {
       updateNote: note.id,
       isEdit: false
     });
+    this.props.dispatch({
+      type:'SELECT_NOTE',
+      actionType:'SELECT_NOTE',
+      updateNote:note.id
+    })
   }
 
   refreshNote = () => {
@@ -70,7 +79,8 @@ const mapStateToProps = (state) => {
   return {
     list: state.notes || {contents:{},_head:null,_tail:null},
     search: state.tasks.search || "",
-    type: state.tasks.type || null
+    type: state.tasks.type || null,
+    updateNote: state.view && state.view.updateNote,
   };
 };
 

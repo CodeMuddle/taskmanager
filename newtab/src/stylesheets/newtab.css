@@ -10,8 +10,19 @@ body {
     user-select: none;
 }
 
+#app {
+    height:100%;
+}
+
 .clearfix {
     clear: both;
+}
+
+.main-loading {
+    height:100%;
+    padding-top:100px;
+    text-align: center;
+    font-size: 40px;
 }
 
 label.checkboxLabel input[type="checkbox"] {
@@ -120,6 +131,24 @@ ol li+li {
     border-top: 1px solid #eee;
 }
 
+.loader-page {
+    width: 600px;
+    margin: 0 auto 0;
+    margin-top:40px;
+    font-size: 30px;
+}
+
+.loader-text{
+    text-align: center;
+}
+
+.t {
+    height:200px;
+    padding-top: 55px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
 .green {
     color: rgb(152, 205, 96);
 }
@@ -131,6 +160,10 @@ ol li+li {
 .border-green {
     border-color: rgb(152, 205, 96);
     background-color: rgba(152, 205, 96, 0.12);
+}
+
+.t-green {
+    background-color: rgb(152, 205, 96);
 }
 
 .blue {
@@ -146,6 +179,10 @@ ol li+li {
     background-color: rgba(146, 200, 237, 0.12);
 }
 
+.t-blue {
+    background-color: #92C8ED;
+}
+
 .orange {
     color: #F6C358;
 }
@@ -159,6 +196,10 @@ ol li+li {
     background-color: rgba(246, 195, 88, 0.12);
 }
 
+.t-orange {
+    background-color: #F6C358; 
+}
+
 .red {
     color: #fc5107;
 }
@@ -170,6 +211,10 @@ ol li+li {
 .border-red {
     border-color: #fc5107;
     background-color: rgba(252, 81, 7, 0.12);
+}
+
+.t-red {
+    background-color: #fc5107;
 }
 
 .border-green input,
@@ -212,7 +257,13 @@ ol li+li {
 
 @media (max-width: 1366px) {
     body {
-        font-size: 10px;
+        font-size: 16px;
+    }
+    .glyphicon {
+        font-size:10px;
+    }
+    .nav-link .glyphicon {
+        font-size: 16px;
     }
     .section-container {
         margin-top: 15px;

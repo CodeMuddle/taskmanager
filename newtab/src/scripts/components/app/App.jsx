@@ -14,15 +14,19 @@ const Pages = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      page:props.page || Pages.NOTES
-    }
   }
+
+  state = {};
 
   changePage = (page) => {
     this.setState({
       page: page || Pages.NOTES
     });
+    this.props.dispatch({
+      type:'PAGE',
+      actionType:'PAGE',
+      page: page || Pages.NOTES
+    })
   }
 
   componentwillreceiveprops() {
@@ -30,9 +34,20 @@ class App extends Component {
   }
 
   render() {
-    let page = this.state.page;
+    if(this.props.loading) {
+      return <div className="loader-page">
+                <div className="row">
+                    <span className="col-sm-6 t t-green">Do First</span>
+                    <span className="col-sm-6 t t-blue">Schedule</span>
+                    <span className="col-sm-6 t t-orange">Delegate</span>
+                    <span className="col-sm-6 t t-red">Don't Do</span>
+                </div>
+                <div className="loader-text">Productivity Matrix</div>
+            </div>;
+    }
+    let page = this.state.page || this.props.page;
     return (
-      <div className="bg-dark fade-in">
+      <div className="bg-dark fade-in" style={{height:"100%"}}>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav">
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
@@ -49,7 +64,7 @@ class App extends Component {
             {/* <button className={"btn btn-status btn-completed"}>Completed</button> */} {/* Add class .active */}            
           </div>
         </div>
-        <div className="content-wrapper">
+        <div className="content-wrapper" style={{height:"100%"}}>
           <div className="container-fluid">
             {page === Pages.PRIORITY_TASK ? <PriorityTasks />: ''}
             {page === Pages.TODAY_TASK ? <PriorityTasks />: ''}
@@ -62,12 +77,20 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps",state);
+  console.log("mapStateToProps ***",state,state.view);
+  let loading = false;
+  if(!state.view) {
+    loading = true;
+  }
   state.tasks = state.tasks || {};
+  state.view = state.view || {};
   return {
     list: state.tasks.list || [],
     search: state.tasks.search || "",
-    type: state.tasks.type || null
+    type: state.tasks.type || null,
+    page: state.view && state.view.page || null,
+    loading: loading,
+    updateNote: state.view && state.view.updateNote,
   };
 };
 
